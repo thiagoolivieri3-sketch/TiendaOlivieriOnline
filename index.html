@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Entrada - TiendaOlivieriOnline</title>
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+  <div class="landing-bg" role="img" aria-label="Portada Tienda Olivieri Online">
+    <div class="overlay"></div>
+    <header class="landing-header">
+      <img src="tiendaolivierionline.webp" alt="Tienda Olivieri Online" class="landing-logo" />
+    </header>
+
+    <main class="landing-main" role="main">
+      <div class="landing-card" role="group" aria-label="Acciones principales">
+        <a class="landing-btn enter-btn" href="tienda.html">Entrar a la tienda</a>
+        <a class="landing-btn wa-btn" href="https://wa.me/5491161368107?text=Hola%20quiero%20consultar%20por%20los%20productos" target="_blank" rel="noopener">Comprar por WhatsApp</a>
+        <a class="landing-btn ig-btn" href="https://instagram.com/TiendaOlivieriOnline" target="_blank" rel="noopener">Ver Instagram</a>
+      </div>
+    </main>
+
+    <footer class="landing-footer" aria-hidden="true">
+      <small>© Tienda Olivieri Online</small>
+    </footer>
+  </div>
+
+  <script>
+    // Ensure keyboard accessibility: Enter key on focused button triggers link
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.landing-btn').forEach(btn => {
+        btn.addEventListener('keyup', (e) => { if(e.key === 'Enter') btn.click(); });
+      });
+    });
+  </script>
+</body>
+</html>

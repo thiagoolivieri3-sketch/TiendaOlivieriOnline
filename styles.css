@@ -1,0 +1,550 @@
+:root{
+  --bg:#0b0b0b;
+  --card:#0f0f0f;
+  --muted:#cfcfcf;
+  --accent:#c71b1b; /* rojo fuerte */
+  --gold:#c9a34a;
+  --white:#ffffff;
+  --radius:12px;
+  --glass: rgba(255,255,255,0.03);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  overflow-x:hidden; /* prevent horizontal overflow from full-bleed elements */
+  background:linear-gradient(180deg, #070707 0%, #0b0b0b 100%);
+  color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.25;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+/* Header */
+.site-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 16px;
+  gap:12px;
+  background:transparent;
+}
+.logo-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.logo{
+  height:140px;
+  max-width:420px;
+  width:auto;
+  display:block;
+  margin:0 auto;
+}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{
+  background:transparent;
+  color:var(--white);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:10px 12px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:transform .12s ease, box-shadow .12s ease, background .12s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+.main-btn{background:linear-gradient(90deg,var(--accent),var(--gold)); color:#fff; border:none}
+.cta{background:var(--accent); border:none}
+.cta.alt{background:transparent;border:1px solid rgba(255,255,255,0.08)}
+
+/* Centered inner wrapper used for header/footer and constrained content (except carousel visuals) */
+.site-inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+  box-sizing:border-box;
+  width:100%;
+}
+
+/* Site container to limit page width and add lateral padding */
+.site-container{
+  max-width:1200px; /* between 1100-1300px as requested */
+  margin:0 auto;
+  padding:0 28px; /* lateral padding so content is not stuck to edges */
+  box-sizing:border-box;
+}
+
+/* Hero - left text / right carousel layout */
+.hero{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  padding:18px;
+  margin:6px 0; /* vertical spacing only; horizontal centering handled by .site-container */
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius:14px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.6);
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+}
+/* left column - textual content */
+.hero-left{flex:1 1 50%;min-width:0;display:flex;align-items:center}
+.hero-content{width:100%}
+.hero h1{
+  margin:0 0 6px 0;
+  font-size:22px;
+  letter-spacing:0.2px;
+}
+.subtitle{margin:0 0 12px 0;color:var(--muted);font-size:14px}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap}
+
+/* right column - carousel */
+.hero-right{flex:1 1 50%;display:flex;align-items:center;justify-content:center;min-width:0}
+.hero-right .product-carousel{width:100%;max-width:720px;margin-left:0;position:relative}
+
+/* Overlay centered over carousel */
+.carousel-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none; /* allow clicks to pass to carousel except CTA */
+  z-index:6;
+  padding:18px;
+  text-align:center;
+}
+.carousel-overlay .overlay-text{
+  pointer-events:auto;
+  background:linear-gradient(180deg, rgba(0,0,0,0.48), rgba(0,0,0,0.28));
+  padding:14px 18px;
+  border-radius:10px;
+  backdrop-filter: blur(6px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.6);
+}
+.overlay-title{color:#fff;font-weight:700;font-size:20px;line-height:1.1;text-shadow:0 6px 18px rgba(0,0,0,0.6)}
+.overlay-sub{color:rgba(255,255,255,0.9);font-size:13px;margin-top:6px;color:var(--muted);text-shadow:0 6px 18px rgba(0,0,0,0.4)}
+
+/* WhatsApp CTA overlay */
+.overlay-wa{
+  pointer-events:auto;
+  margin-top:12px;
+  background:linear-gradient(90deg,#25D366,#16a34a);
+  border:none;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:700;
+  box-shadow:0 12px 28px rgba(37,211,102,0.14);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+}
+
+/* ensure carousel and slides occupy full area and images cover */
+.carousel-track{
+  position:relative;
+  width:100%;
+  height:420px; /* keep prominent */
+  border-radius:14px;
+  overflow:hidden;
+  background:transparent;
+  box-shadow:0 20px 60px rgba(0,0,0,0.7);
+  display:flex;
+  align-items:stretch;
+  transition:transform .6s cubic-bezier(.2,.9,.2,1);
+  will-change:transform;
+  font-size:0;
+}
+.carousel-slide{
+  min-width:100%;
+  height:100%;
+  flex:0 0 100%;
+  display:block;
+  position:relative;
+  padding:0;
+  cursor:pointer;
+  background:transparent;
+  transition:opacity .6s ease;
+}
+/* image container fills the panel */
+.carousel-slide .thumb{
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  overflow:hidden;
+  display:block;
+  background:#000;
+}
+/* image fills entire panel with cover */
+.carousel-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* cover entire slide area without distortion */
+  display:block;
+  vertical-align:middle;
+  background:transparent;
+}
+
+/* smaller layout tweaks for phones */
+@media (max-width:520px){
+  .carousel-track{height:340px}
+  .overlay-title{font-size:18px}
+  .overlay-sub{font-size:12px}
+  .overlay-wa{padding:10px 12px;font-size:14px}
+}
+
+/* keep visual card styles for fallback visuals */
+.visual-card{width:100%;border-radius:12px;overflow:hidden;box-shadow:0 14px 46px rgba(0,0,0,0.65)}
+.visual-card img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Catalog */
+.catalog{padding:16px;margin:10px}
+.section-title{margin:0 0 12px 4px;font-size:16px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.product{
+  background:var(--card);
+  border-radius:12px;
+  overflow:hidden;
+  will-change:transform,box-shadow,filter;
+  transition:transform .16s cubic-bezier(.2,.9,.2,1), box-shadow .16s cubic-bezier(.2,.9,.2,1), filter .16s ease;
+  display:flex;
+  flex-direction:column;
+}
+.product:hover{
+  transform:translateY(-8px) scale(1.035);
+  box-shadow:0 24px 48px rgba(0,0,0,0.55), 0 6px 18px rgba(0,0,0,0.35);
+  filter:brightness(1.04) contrast(1.03);
+}
+.prod-media{height:120px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+.prod-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .32s cubic-bezier(.2,.9,.2,1), opacity .24s ease;
+  backface-visibility:hidden;
+  transform-origin:center center;
+}
+.prod-media:hover img{
+  transform:scale(1.06);
+}
+.prod-body{padding:8px;display:flex;flex-direction:column;gap:6px}
+.prod-name{margin:0;font-size:13px}
+.prod-price{margin:0;color:var(--gold);font-weight:700}
+.buy-btn{margin-top:auto;background:var(--accent);border:none;padding:8px;border-radius:10px;color:#fff}
+
+/* Floating WhatsApp */
+.whatsapp-float{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,var(--accent),#a91616);
+  color:white;
+  text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,0.5);
+  z-index:60;
+  transition:transform .12s;
+}
+.whatsapp-float:hover{transform:translateY(-6px)}
+
+/* Footer */
+.site-footer{margin-top:auto;padding:18px 12px;background:transparent;border-top:1px solid rgba(255,255,255,0.03)}
+.footer-inner{display:flex;flex-direction:column;gap:8px;align-items:center;color:var(--muted)}
+.footer-inner .socials{display:flex;gap:12px}
+.footer-inner a{color:var(--muted);text-decoration:none;font-size:14px}
+
+/* Responsive */
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero{flex-direction:column}
+  .hero-visual{width:100%}
+  .product-carousel{width:100%;max-width:100%;margin-left:0}
+  .carousel-track{height:360px}
+  .carousel-slide .thumb{width:68%}
+  .carousel-slide .meta{width:32%}
+}
+@media (max-width:520px){
+  .grid{grid-template-columns:repeat(1,1fr)}
+  .top-actions{display:none}
+  .logo{height:96px; max-width:320px}
+  .hero h1{font-size:18px}
+  .prod-media{height:180px}
+  .site-header{padding:10px}
+}
+
+/* Product carousel (hero-right) */
+.product-carousel{
+  width:50%;
+  max-width:50%;
+  margin-left:12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:stretch;
+  z-index:2;
+}
+/* increase height and presence of the carousel so it's the main visual focus */
+.carousel-track{
+  position:relative;
+  width:100%;
+  height:420px; /* bigger for prominent product imagery */
+  border-radius:14px;
+  overflow:hidden;
+  /* use a subtle glass background to avoid solid black showing through */
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow:0 20px 60px rgba(0,0,0,0.7);
+  display:flex;
+  align-items:stretch;
+  /* ensure smooth whole-track sliding and avoid gaps */
+  transition:transform .6s cubic-bezier(.2,.9,.2,1);
+  will-change:transform;
+  font-size:0; /* prevent inline gap artifacts */
+}
+/* each slide is a single full-bleed panel so images always cover the area */
+.carousel-slide{
+  min-width:100%;
+  height:100%;
+  flex:0 0 100%;
+  display:block;
+  position:relative;
+  padding:0;
+  cursor:pointer;
+  background:transparent;
+}
+/* image container fills the panel */
+.carousel-slide .thumb{
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  overflow:hidden;
+  display:block;
+}
+/* image fills entire panel with cover */
+.carousel-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* cover entire slide area without distortion */
+  display:block;
+  vertical-align:middle;
+  background:transparent;
+}
+/* metadata overlays on top of the image without affecting layout or width */
+.carousel-slide .meta{
+  position:absolute;
+  right:12px;
+  bottom:12px;
+  left:auto;
+  width:auto;
+  max-width:46%;
+  background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2));
+  color:var(--white);
+  padding:10px 12px;
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  backdrop-filter: blur(4px);
+}
+.carousel-slide .meta h4{margin:0;font-size:15px}
+.carousel-slide .meta p{margin:0;font-weight:700;color:var(--gold)}
+.carousel-controls{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:6px}
+.carousel-prev, .carousel-next{
+  background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white);padding:8px 12px;border-radius:8px;cursor:pointer;
+  transition:transform .12s, box-shadow .12s;
+}
+.carousel-prev:hover, .carousel-next:hover{transform:translateY(-4px);box-shadow:0 8px 18px rgba(0,0,0,0.5)}
+
+/* keep modal styles marker */
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:80;
+}
+.modal.open{display:flex}
+.modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.75));
+  backdrop-filter: blur(6px);
+}
+.modal-panel{
+  position:relative;
+  width:min(920px, 94%);
+  max-height:88vh;
+  margin:auto;
+  background:var(--card);
+  border-radius:14px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.7);
+  display:flex;
+  gap:18px;
+  overflow:hidden;
+  z-index:82;
+}
+.modal-close{
+  position:absolute;
+  right:12px;
+  top:10px;
+  background:transparent;
+  border:none;
+  color:var(--muted);
+  font-size:18px;
+  padding:8px;
+  cursor:pointer;
+}
+.modal-media{
+  flex:1 1 55%;
+  background:#0a0a0a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+}
+.modal-media img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  max-height:84vh;
+}
+.modal-body{
+  flex:1 1 45%;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  min-width:220px;
+}
+.modal-body h3{margin:0;font-size:18px}
+.modal-desc{margin:6px 0 0 0;color:var(--muted);font-size:14px;line-height:1.3}
+.modal-body p{margin:0;color:var(--gold);font-weight:700;font-size:18px}
+.modal-actions{margin-top:auto}
+.modal-actions .buy-btn{width:100%;padding:12px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--gold));border:none}
+@media (max-width:900px){
+  .modal-panel{flex-direction:column}
+  .modal-media{min-height:260px}
+}
+
+/* Sticky header */
+.site-header.sticky{
+  position:sticky;
+  top:0;
+  z-index:90;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(10,10,10,0.6), rgba(10,10,10,0.45));
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+
+/* Dark overlay on carousel images to improve text contrast */
+.carousel-slide::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.36); /* slightly darken images */
+  pointer-events:none;
+  z-index:2;
+}
+
+/* Bigger hero overlay text with animation */
+.carousel-overlay .overlay-text .overlay-title{
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:0.2px;
+  text-align:center;
+  line-height:1.05;
+  animation:fadeUp .9s ease both;
+}
+.carousel-overlay .overlay-text .overlay-sub{
+  font-size:14px;
+  margin-top:8px;
+  animation:fadeUp .9s ease .12s both;
+}
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(8px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* WhatsApp CTA styling and pulse */
+.overlay-wa, .whatsapp-btn, .whatsapp-float{
+  background:linear-gradient(90deg,#06c755,#0fa64a);
+  color:#fff;
+  border:none;
+  padding:10px 16px;
+  border-radius:999px;
+  font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 10px 30px rgba(6,199,85,0.14);
+  transform-origin:center;
+  transition:transform .16s ease, box-shadow .16s ease, filter .12s ease;
+}
+.overlay-wa:hover, .whatsapp-btn:hover, .whatsapp-float:hover{ transform:translateY(-4px) scale(1.03); filter:brightness(1.03) }
+.overlay-wa:active{ transform:scale(.98) }
+
+/* subtle pulse */
+@keyframes pulse {
+  0%{ box-shadow: 0 6px 18px rgba(6,199,85,0.09)}
+  50%{ box-shadow: 0 14px 32px rgba(6,199,85,0.14); transform:scale(1.02)}
+  100%{ box-shadow: 0 6px 18px rgba(6,199,85,0.09)}
+}
+.whatsapp-float{ animation: pulse 3.6s ease-in-out infinite; }
+
+/* Product image hover zoom (gentle) */
+.prod-media img{
+  transition:transform .5s cubic-bezier(.2,.9,.2,1), opacity .24s ease;
+}
+.product:hover .prod-media img{ transform:scale(1.06) }
+
+/* spacing and container adjustments */
+.site-container{
+  max-width:1200px; /* between 1100-1300px as requested */
+  margin:0 auto;
+  padding:0 28px; /* lateral padding so content is not stuck to edges */
+  box-sizing:border-box;
+}
+
+/* ensure hero and main content are constrained and centered */
+.hero{ padding:22px; margin:14px auto; max-width:1200px; width:100%; box-sizing:border-box; }
+.product-carousel{ max-width:720px; width:100%; margin-left:0; }
+.catalog{ padding:22px 28px; margin-top:6px; max-width:1200px; margin-left:auto; margin-right:auto; box-sizing:border-box; }
+.grid{ gap:14px }
+
+/* Center and align trust section */
+.trust-section{ padding:20px 18px; margin:12px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); }
+.trust-grid{ display:flex; gap:18px; justify-content:center; align-items:center; flex-wrap:wrap; max-width:1100px; margin:0 auto; }
+.trust-item{ display:flex; flex-direction:column; align-items:center; gap:8px; min-width:160px; text-align:center; color:var(--muted) }
+.trust-icon{ background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); padding:8px; border-radius:10px; color:var(--gold) }
+.trust-title{ font-weight:700; color:var(--white); font-size:14px }
+
+/* Ensure carousel text overlay sits above image overlay */
+.carousel-overlay{ z-index:8 }
+.carousel-slide .meta{ z-index:9 }
+
+/* Ensure modal remains high */
+.modal{ z-index:100 }

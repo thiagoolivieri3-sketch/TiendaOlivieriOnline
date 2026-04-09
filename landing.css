@@ -1,0 +1,115 @@
+:root{
+  --bg-dark: rgba(6,6,6,0.65);
+  --white: #ffffff;
+  --muted: rgba(255,255,255,0.85);
+  --wa: linear-gradient(90deg,#25D366,#16a34a);
+  --accent: #c71b1b;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:#000;
+  color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Fullscreen bg using an external modern footwear/fashion image */
+.landing-bg{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  background-image: url('https://images.unsplash.com/photo-1528701800489-476f2b9f3b4d?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&s=2d8f5b3f4f0a0f6c6a8b7a2b7c9d8f1a');
+  background-size:cover;
+  background-position:center center;
+  position:relative;
+}
+
+/* soft dark overlay for legibility */
+.overlay{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.6));
+  pointer-events:none;
+}
+
+/* header with large centered logo */
+.landing-header{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding:36px 20px 10px 20px;
+  position:relative;
+  z-index:2;
+}
+.landing-logo{
+  max-width:360px;
+  width:60%;
+  height:auto;
+  display:block;
+  filter:drop-shadow(0 10px 30px rgba(0,0,0,0.6));
+}
+
+/* main centered card with buttons */
+.landing-main{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  z-index:2;
+}
+.landing-card{
+  width:min(540px, 94%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius:16px;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:stretch;
+  box-shadow:0 18px 50px rgba(0,0,0,0.6);
+  text-align:center;
+}
+
+/* Buttons style */
+.landing-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  text-decoration:none;
+  padding:14px 18px;
+  border-radius:12px;
+  font-weight:800;
+  color:var(--white);
+  border:0;
+  cursor:pointer;
+  transition:transform .14s ease, box-shadow .14s ease, opacity .12s ease;
+  min-height:52px;
+  font-size:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* Specific button colors */
+.enter-btn{ background: linear-gradient(90deg,#2b2b2b,#111); color:var(--muted); border:1px solid rgba(255,255,255,0.06) }
+.wa-btn{ background: var(--wa); color:#fff; }
+.ig-btn{ background: linear-gradient(90deg,#E1306C,#C13584); color:#fff; }
+
+/* Hover effects */
+.landing-btn:hover{ transform:translateY(-6px) scale(1.01); box-shadow:0 20px 48px rgba(0,0,0,0.55) }
+.landing-btn:active{ transform:translateY(-2px) }
+
+/* Footer */
+.landing-footer{ width:100%; text-align:center; padding:18px 12px 40px 12px; color:rgba(255,255,255,0.7); z-index:2; font-size:13px }
+
+/* Responsive tweaks */
+@media (max-width:520px){
+  .landing-logo{ max-width:220px; width:62%; }
+  .landing-card{ padding:18px; gap:12px; width:92%; border-radius:12px }
+  .landing-btn{ font-size:15px; padding:12px 14px; min-height:48px; border-radius:10px }
+}

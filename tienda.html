@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TiendaOlivieriOnline</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header sticky">
+    <div class="site-inner">
+      <div class="logo-wrap" aria-hidden="false">
+        <img src="tiendaolivierionline.webp" alt="TiendaOlivieriOnline" class="logo">
+      </div>
+      <nav class="top-actions" aria-label="Acciones principales">
+        <button class="btn main-btn" id="btn-store">🛒 TIENDA ONLINE</button>
+        <a class="btn whatsapp-btn" id="btn-whatsapp" href="https://wa.me/5491161368107?text=Hola%20quiero%20consultar%20por%20los%20productos" rel="noopener" target="_blank" title="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M21.7 18.3a11.9 11.9 0 0 0 .3-2.8c0-6.6-5.4-12-12-12S-1 8.9-1 15.5c0 2 .5 3.9 1.5 5.6L1 24l3.1-1.6A11.9 11.9 0 0 0 12 27c6.6 0 11.9-5.4 11.9-12 0-1-.1-1.9-.2-2.7z" fill="none"/><path d="M17.2 14.2c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1s-.8 1-1 1.2c-.2.3-.4.4-.7.2-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.3-1.6-1.5-1.9-.2-.3 0-.5.2-.7.2-.2.4-.5.6-.8.2-.3.2-.5.3-.8.1-.3 0-.6-.1-.8-.1-.3-.7-1.6-1-2.2-.3-.6-.6-.5-.8-.5-.2 0-.5 0-.8 0-.3 0-.8.1-1.2.5-.4.4-1.5 1.4-1.5 3.4s1.6 3.9 1.8 4.2c.2.3 3 4.6 7.4 6.4l.1.1c3 .9 3.3.8 3.9.7.6-.1 1.9-.8 2.2-1.6.3-.9.3-1.6.3-1.8 0-.2-.2-.4-.5-.6z" fill="currentColor"/></svg>
+          <span style="margin-left:8px;">WHATSAPP</span>
+        </a>
+        <a class="btn" href="https://instagram.com/TiendaOlivieriOnline" target="_blank" rel="noopener" aria-label="Instagram - TiendaOlivieriOnline" title="Instagram - TiendaOlivieriOnline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" style="flex:0 0 auto;">
+            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <path d="M16 11.999a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="17.8" cy="6.2" r="0.8" fill="currentColor"/>
+          </svg>
+          <span style="margin-left:8px;">INSTAGRAM</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="site-container">
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-content" style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+          <!-- Left column now keeps only the CTA and spacing; the hero text is shown once in the carousel overlay -->
+          <div style="min-height:48px;"></div>
+          
+        </div>
+      </div>
+
+      <!-- Right: NUEVO CARRUSEL ESTÁTICO Y AUTÓNOMO (no reutiliza el anterior) -->
+      <div class="hero-right" aria-hidden="true">
+        <div class="product-carousel" aria-label="Carrusel de productos">
+          <!-- Overlay text and WhatsApp CTA centered over the carousel -->
+          <div class="carousel-overlay" aria-hidden="false">
+            <div class="overlay-inner site-inner">
+              <div class="overlay-text">
+                <div class="overlay-title">Bienvenido a Tienda Olivieri Online</div>
+                <div class="overlay-sub">Las mejores ofertas en productos seleccionados</div>
+              </div>
+              <button id="overlay-wa" class="btn overlay-wa" title="Consultar por WhatsApp">Consultar por WhatsApp</button>
+            </div>
+          </div>
+
+          <!-- Nuevo carrusel independiente -->
+          <div id="new-carousel" class="new-carousel" role="region" aria-label="Carrusel de productos destacado">
+            <div class="new-carousel-track" id="new-carousel-track" role="list">
+              <!-- Slides añadidos manualmente para asegurar variedad -->
+              <div class="new-slide" role="listitem" data-name="CÁMARA DOMO OM" data-price="$39.999" data-desc="Cámara IP con giro y visión nocturna.">
+                <img src="/Diseño sin título (97).png" alt="CÁMARA DOMO OM">
+              </div>
+              <div class="new-slide" role="listitem" data-name="TIRA LED RGB 5M" data-price="$14.999" data-desc="Tira LED RGB con control remoto.">
+                <img src="/Diseño sin título (103).png" alt="TIRA LED RGB 5M">
+              </div>
+              <div class="new-slide" role="listitem" data-name="MINI PARLANTE PORTATIL" data-price="$9.999" data-desc="Parlante portátil, colores variados.">
+                <img src="/Diseño sin título (92).png" alt="MINI PARLANTE PORTATIL">
+              </div>
+              <div class="new-slide" role="listitem" data-name="AURICULARES TRUE WIRELESS" data-price="$11.999" data-desc="Auriculares inPods 12, varios colores.">
+                <img src="/Diseño sin título (100).png" alt="AURICULARES TRUE WIRELESS">
+              </div>
+              <div class="new-slide" role="listitem" data-name="PAVA ELECTRICA 1.8L" data-price="$19.999" data-desc="Pava eléctrica acero inoxidable 1.8L.">
+                <img src="/Diseño sin título (98).png" alt="PAVA ELECTRICA 1.8L">
+              </div>
+              <div class="new-slide" role="listitem" data-name="RELOJ SMART WATCH" data-price="$11.999" data-desc="Smartwatch color macaron, monitoreo de actividad.">
+                <img src="/Diseño sin título (96).png" alt="RELOJ SMART WATCH">
+              </div>
+            </div>
+
+            <div class="new-carousel-controls" aria-hidden="false">
+              <button id="new-prev" class="carousel-prev" aria-label="Anterior">‹</button>
+              <button id="new-next" class="carousel-next" aria-label="Siguiente">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section id="catalog" class="catalog">
+      <h2 class="section-title">Catálogo destacado</h2>
+      <div class="grid">
+        <!-- Product 1 -->
+        <article class="product" data-name="CAMARA DOMO OM" data-price="$39.999" data-desc="Cámara IP con giro y visión nocturna para vigilancia continua y acceso remoto fácil.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (97).png" alt="CAMARA DOMO OM" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">CAMARA DOMO OM</h3>
+            <p class="prod-price">$39.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product" data-name="TIRA LED RGB 3528 - 5MTS" data-price="$14.999" data-desc="Tira RGB flexible para ambientación con múltiples colores y control remoto incluido.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (103).png" alt="TIRA LED RGB 3528 - 5MTS" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">TIRA LED RGB 3528 - 5MTS</h3>
+            <p class="prod-price">$14.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product" data-name="MINI PARLANTE PORTATIL SH-309" data-price="$9.999" data-desc="Parlante compacto con buena autonomía y sonido claro, ideal para llevar a todas partes.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (92).png" alt="MINI PARLANTE PORTATIL SH-309" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">MINI PARLANTE PORTATIL SH-309</h3>
+            <p class="prod-price">$9.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="product" data-name="AURICULAR I12" data-price="$11.999" data-desc="Auriculares true wireless con carga portátil y buen aislamiento para llamadas y música.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (100).png" alt="AURICULAR I12" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">AURICULAR I12</h3>
+            <p class="prod-price">$11.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="product" data-name="PAVA ELECTRICA C/CORTE MATE ACERO - STAR TRACK" data-price="$19.999" data-desc="Hervidor 1.8L en acero inoxidable con corte automático, rápido y seguro.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (98).png" alt="PAVA ELECTRICA C/CORTE MATE ACERO - STAR TRACK" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">PAVA ELECTRICA C/CORTE MATE ACERO - STAR TRACK</h3>
+            <p class="prod-price">$19.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 6 -->
+        <article class="product" data-name="CARGADOR IPHONE 20W - TIPO C A LIGHTNING" data-price="$10.999" data-desc="Cargador oficial 20W para carga rápida y segura de iPhone y accesorios.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (102).png" alt="CARGADOR IPHONE 20W - TIPO C A LIGHTNING" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">CARGADOR IPHONE 20W - TIPO C A LIGHTNING</h3>
+            <p class="prod-price">$10.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 7 -->
+        <article class="product" data-name="SOPORTE TV FIJO 26&quot;- 63&quot;" data-price="$10.999" data-desc="Soporte metálico resistente que fija tu TV ahorrando espacio y asegurando estabilidad.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (91).png" alt="SOPORTE TV FIJO 26-63" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">SOPORTE TV FIJO 26"- 63"</h3>
+            <p class="prod-price">$10.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 8 -->
+        <article class="product" data-name="SOPORTE IMANTADO PARA CELULAR" data-price="$11.999" data-desc="Base magnética compacta para mantener tu teléfono seguro y accesible en el auto.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (94).png" alt="SOPORTE IMANTADO PARA CELULAR" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">SOPORTE IMANTADO PARA CELULAR</h3>
+            <p class="prod-price">$11.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 9 -->
+        <article class="product" data-name="RELOJ SMART WATCH D20 - CUADRADO (409)" data-price="$11.999" data-desc="Smartwatch con monitoreo de actividad, notificaciones y diseño moderno, ideal para uso diario.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (96).png" alt="RELOJ SMART WATCH D20 - CUADRADO (409)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">RELOJ SMART WATCH D20 - CUADRADO (409)</h3>
+            <p class="prod-price">$11.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 10 -->
+        <article class="product" data-name="MATE AUTO CEBADOR - C/DISEÑO" data-price="$8.999" data-desc="Mate con diseño decorativo y función de cebado automático para mayor comodidad.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (90).png" alt="MATE AUTO CEBADOR - C/DISEÑO" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">MATE AUTO CEBADOR - C/DISEÑO</h3>
+            <p class="prod-price">$8.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 11 -->
+        <article class="product" data-name="CALOVENTOR ELECTRICO ORYX" data-price="$28.000" data-desc="Caloventor portátil 2000W que calienta rápido y es fácil de mover entre ambientes.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (95).png" alt="CALOVENTOR ELECTRICO ORYX" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">CALOVENTOR ELECTRICO ORYX</h3>
+            <p class="prod-price">$28.000</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Product 12 -->
+        <article class="product" data-name="ADAPTADOR CARGA RAPIDA SAMSUNG -15W" data-price="$9.999" data-desc="Adaptador compacto Samsung 15W para carga rápida y segura de dispositivos compatibles.">
+          <div class="prod-media">
+            <img src="/Diseño sin título (85).png" alt="ADAPTADOR CARGA RAPIDA SAMSUNG -15W" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-name">ADAPTADOR CARGA RAPIDA SAMSUNG -15W</h3>
+            <p class="prod-price">$9.999</p>
+            <button class="btn buy-btn">Comprar por WhatsApp</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Product detail modal -->
+    <div id="product-modal" class="modal" aria-hidden="true">
+      <div class="modal-backdrop" data-close></div>
+      <aside class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" aria-label="Cerrar" data-close>✕</button>
+        <div class="modal-media">
+          <img id="modal-img" src="" alt="">
+        </div>
+        <div class="modal-body">
+          <h3 id="modal-title"></h3>
+          <p id="modal-price"></p>
+          <p id="modal-desc" class="modal-desc" aria-hidden="false"></p>
+          <div class="modal-actions">
+            <a id="modal-whatsapp" class="btn buy-btn" target="_blank" rel="noopener">Comprar por WhatsApp</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Trust / confidence section -->
+    <section class="trust-section" aria-label="Confianza Tienda">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <svg class="trust-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 6 6 .5-4.5 4 1 6L12 17l-5.5 3.5 1-6L3 8.5 9 8 12 2z" fill="currentColor"/></svg>
+          <div class="trust-title">Coordinamos entregas por WhatsApp</div>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 1a4 4 0 0 1 4 4v2h2a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 1-1h2V5a4 4 0 0 1 4-4z" fill="currentColor"/></svg>
+          <div class="trust-title">Pagos seguros</div>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 0 1 7 7v3a7 7 0 0 1-7 7 7 7 0 0 1-7-7V9a7 7 0 0 1 7-7z" fill="currentColor"/></svg>
+          <div class="trust-title">Atención personalizada</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <a id="whatsapp-float" class="whatsapp-float" href="https://wa.me/5491161368107?text=Hola%20quiero%20consultar%20por%20los%20productos" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 3.5A11 11 0 1 0 24 12a11 11 0 0 0-3.5-8.5z" fill="none"/><path d="M17.2 14.2c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1s-.8 1-1 1.2c-.2.3-.4.4-.7.2-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.3-1.6-1.5-1.9-.2-.3 0-.5.2-.7.2-.2.4-.5.6-.8.2-.3.2-.5.3-.8.1-.3 0-.6-.1-.8-.1-.3-.7-1.6-1-2.2-.3-.6-.6-.5-.8-.5-.2 0-.5 0-.8 0-.3 0-.8.1-1.2.5-.4.4-1.5 1.4-1.5 3.4s1.6 3.9 1.8 4.2c.2.3 3 4.6 7.4 6.4l.1.1c3 .9 3.3.8 3.9.7.6-.1 1.9-.8 2.2-1.6.3-.9.3-1.6.3-1.8 0-.2-.2-.4-.5-.6z" fill="#fff"/></svg>
+  </a>
+
+  <footer class="site-footer">
+    <div class="site-inner">
+      <div class="footer-inner">
+        <div class="brand">TiendaOlivieriOnline</div>
+        <div class="socials">
+          <a href="https://instagram.com/TiendaOlivieriOnline" target="_blank" rel="noopener">Instagram</a>
+
+          <a href="https://wa.me/0000000000" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+        <div class="thanks">Gracias por confiar en nosotros</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
