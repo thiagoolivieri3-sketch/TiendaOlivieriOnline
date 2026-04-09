@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tienda Olivieri Online</title>
+
   <style>
     body {
       margin: 0;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: url('Diseño sin título (97).png') center/cover no-repeat;
       height: 100vh;
       display: flex;
@@ -16,25 +17,33 @@
     }
 
     .overlay {
-      background: rgba(0,0,0,0.6);
-      padding: 30px;
-      border-radius: 12px;
+      background: rgba(0,0,0,0.75);
+      padding: 40px 30px;
+      border-radius: 16px;
       text-align: center;
+      width: 90%;
+      max-width: 400px;
     }
 
-    img.logo {
-      width: 200px;
-      margin-bottom: 20px;
+    .logo {
+      width: 180px;
+      margin-bottom: 25px;
     }
 
     .btn {
       display: block;
-      margin: 10px 0;
-      padding: 12px;
-      border-radius: 8px;
+      width: 100%;
+      margin: 12px 0;
+      padding: 14px;
+      border-radius: 10px;
       text-decoration: none;
       color: white;
       font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
     }
 
     .tienda { background: black; }
@@ -44,12 +53,14 @@
 </head>
 
 <body>
+
   <div class="overlay">
     <img src="tiendaolivierionline.webp" class="logo">
 
-    <a href="tienda.html" class="btn tienda">Entrar a la tienda</a>
-    <a href="https://wa.me/5491161368107" class="btn whatsapp">WhatsApp</a>
-    <a href="https://instagram.com/TiendaOlivieriOnline" class="btn instagram">Instagram</a>
+    <a href="tienda.html" class="btn tienda">🛒 Entrar a la tienda</a>
+    <a href="https://wa.me/5491161368107" class="btn whatsapp">📲 Comprar por WhatsApp</a>
+    <a href="https://instagram.com/TiendaOlivieriOnline" class="btn instagram">📸 Ver Instagram</a>
   </div>
+
 </body>
 </html>
